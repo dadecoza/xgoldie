@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
         0, 0,
         xgwidth, xgheight,
         5,
-        BlackPixel(display, screen), WhitePixel(display, screen)
+        WhitePixel(display, screen), BlackPixel(display, screen)
     );
     for (int i = 0; i < 11; i++) {
         bitmaps[i] = XCreatePixmapFromBitmapData(
