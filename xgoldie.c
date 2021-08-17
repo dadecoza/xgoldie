@@ -34,7 +34,14 @@ int main(int argc, char *argv[]) {
         BlackPixel(display, screen), WhitePixel(display, screen)
     );
     for (int i = 0; i < 11; i++) {
-        bitmaps[i] = XCreatePixmapFromBitmapData(display, window, xgbits+(i*3616), xgwidth, xgheight, WhitePixel(display, screen), BlackPixel(display, screen), depth);
+        bitmaps[i] = XCreatePixmapFromBitmapData(
+            display,
+            window,
+            xgbits+(i*3616),
+            xgwidth, xgheight,
+            WhitePixel(display, screen), BlackPixel(display, screen),
+            depth
+        );
     }
     sizehints.flags = PMinSize | PMaxSize;
     sizehints.min_width = xgwidth;
