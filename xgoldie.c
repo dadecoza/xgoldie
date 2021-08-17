@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 	GC gc;
 	XSizeHints sizehints;
 	Pixmap bitmap;
-	int screen, depth, frame, direction, exposed, x11_fd, running;
+	int screen, depth, frame, direction, x11_fd;
 	fd_set in_fds;
 	struct timeval tv;
 	static char *title = "XGoldie";
@@ -45,7 +45,6 @@ int main(int argc, char *argv[]) {
 	XMapWindow(display, window);
 	frame = 0;
 	direction = 0;
-	exposed = 0;
 	x11_fd = ConnectionNumber(display);
 	// Main loop
 	while(1) {
