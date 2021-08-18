@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
         5,
         WhitePixel(display, screen), BlackPixel(display, screen)
     );
-    int c;
+    int i;
     for (i = 0; i < 11; i++) {
         char *ptr = xgbits+(i*3616);
         bitmaps[i] = XCreatePixmapFromBitmapData(
