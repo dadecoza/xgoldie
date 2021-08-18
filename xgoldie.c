@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
             }
 
             if (event.type == KeyPress) {
-                if ( event.xkey.keycode == 0x09 ) running = 0;
+                if (( event.xkey.keycode == 0x09 )||( event.xkey.keycode == 0x3D )) running = 0;
             }
         }
     }
