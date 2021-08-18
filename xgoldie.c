@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <sys/select.h>
 #include "xgbitmap.h"
 
 int main(int argc, char *argv[]) {
@@ -34,10 +35,11 @@ int main(int argc, char *argv[]) {
         WhitePixel(display, screen), BlackPixel(display, screen)
     );
     for (int i = 0; i < 11; i++) {
+        char *ptr = xgbits+(i*3616);
         bitmaps[i] = XCreatePixmapFromBitmapData(
             display,
             window,
-            xgbits+(i*3616),
+            ptr,
             xgwidth, xgheight,
             WhitePixel(display, screen), BlackPixel(display, screen),
             depth
