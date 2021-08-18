@@ -34,7 +34,8 @@ int main(int argc, char *argv[]) {
         5,
         WhitePixel(display, screen), BlackPixel(display, screen)
     );
-    for (int i = 0; i < 11; i++) {
+    int c;
+    for (i = 0; i < 11; i++) {
         char *ptr = xgbits+(i*3616);
         bitmaps[i] = XCreatePixmapFromBitmapData(
             display,
@@ -46,9 +47,9 @@ int main(int argc, char *argv[]) {
         );
     }
     sizehints.flags = PMinSize | PMaxSize;
-    sizehints.min_width = xgwidth;
+    sizehints.min_width = 0;
     sizehints.max_width = xgwidth;
-    sizehints.min_height = xgheight;
+    sizehints.min_height = 0;
     sizehints.max_height = xgheight;
     XSetWMNormalHints(display, window, &sizehints);
     XStoreName(display, window, title);
