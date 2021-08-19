@@ -1,6 +1,6 @@
 # XGoldie
 
-XGoldie is an animation of a dancing girl (Goldie Hawn?) for the X11 Window System.
+XGoldie is an (nsfw) animation of a dancing girl (Goldie Hawn?) for the X11 Window System.
 
 It is based on WGOLDIE.EXE for Windows 3.1 written by Walter Prodorutti.
 
@@ -18,3 +18,9 @@ cd xgoldie
 ```
 make && ./xgoldie
 ```
+
+
+
+https://user-images.githubusercontent.com/2756871/130030146-7c3a3a23-6124-42fb-93b8-1c88ea464abe.mov
+
+
