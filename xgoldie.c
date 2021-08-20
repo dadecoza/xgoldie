@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
     GC gc;
     XSizeHints sizehints;
     Pixmap bitmaps[11];
-    int screen, depth, frame, direction, exposed, running, x11_fd;
+    int screen, depth, frame, direction, exposed, running, x11_fd, i;
     fd_set in_fds;
     static char *title = "XGoldie";
     struct timeval tv;
@@ -34,7 +34,6 @@ int main(int argc, char *argv[]) {
         5,
         WhitePixel(display, screen), BlackPixel(display, screen)
     );
-    int i;
     for (i = 0; i < 11; i++) {
         char *ptr = xgbits+(i*3616);
         bitmaps[i] = XCreatePixmapFromBitmapData(
@@ -53,7 +52,7 @@ int main(int argc, char *argv[]) {
     sizehints.max_height = xgheight;
     XSetWMNormalHints(display, window, &sizehints);
     XStoreName(display, window, title);
-    Atom wmDeleteMessage = XInternAtom(display, "WM_DELETE_WINDOW", False);
+    Atom wmDeleteMessage = XInternAtom(display, "WM_DELETE_WINDOW", 0);
     XSetWMProtocols(display, window, &wmDeleteMessage, 1);
     XSelectInput(display, window, ExposureMask | KeyPressMask);
     XSetGraphicsExposures(display, gc, 0);
@@ -70,7 +69,7 @@ int main(int argc, char *argv[]) {
         FD_ZERO(&in_fds);
         FD_SET(x11_fd, &in_fds);
 
-        // Set our timer.
+        // Time between frames
         tv.tv_usec = 50000;
         tv.tv_sec = 0;
 
@@ -78,6 +77,7 @@ int main(int argc, char *argv[]) {
         if (num_ready_fds > 0) {
             // Event Received!
         } else if (num_ready_fds == 0) {
+            // Time to animate!
             if (exposed) {
                 if (direction == 0) {
                     if (++frame >= 10) direction = 1;
