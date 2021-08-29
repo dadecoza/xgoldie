@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     XEvent event;
     GC gc;
     XSizeHints sizehints;
-    Pixmap bitmaps[11];
+    Pixmap bitmaps[xgframes];
     int screen, depth, frame, direction, exposed, running, x11_fd, i;
     fd_set in_fds;
     static char *title = "XGoldie";
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
         5,
         WhitePixel(display, screen), BlackPixel(display, screen)
     );
-    for (i = 0; i < 11; i++) {
+    for (i = 0; i < xgframes; i++) {
         char *ptr = xgbits+(i*3616);
         bitmaps[i] = XCreatePixmapFromBitmapData(
             display,
@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
             // Time to animate!
             if (exposed) {
                 if (direction == 0) {
-                    if (++frame >= 10) direction = 1;
+                    if (frame++ >= xgframes) direction = 1;
                 } else {
                     if (--frame <= 0) direction = 0;
                 }
