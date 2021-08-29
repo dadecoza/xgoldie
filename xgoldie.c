@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
             // Time to animate!
             if (exposed) {
                 if (direction == 0) {
-                    if (frame++ > xgframes) direction = 1;
+                    if (++frame >= xgframes-1) direction = 1;
                 } else {
                     if (--frame <= 0) direction = 0;
                 }
