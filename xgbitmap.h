@@ -1,5 +1,5 @@
 #define xgwidth 128
-#define xgheight 224
+#define xgheight 226
 #define xgframes 11
 
 static char xgbits[] = {
